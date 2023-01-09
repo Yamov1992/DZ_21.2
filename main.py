@@ -52,7 +52,7 @@ def main():
         try:
             courier.move()
         except BaseError as error:
-            courier.cancel()
+            
             print(error.message)
 
 
