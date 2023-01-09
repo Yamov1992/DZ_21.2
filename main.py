@@ -32,6 +32,7 @@ def main():
 
         for storage_name in storages:
             print(f"В {storage_name} хранится: {storages[storage_name].get_items()}")
+            print(f' Cвободное место: {storages[storage_name].get_free_space()}')
 
         user_input = input(
             "Введите строку в формате: ""Достать 3 печенька из склад в магазин"".\n"
@@ -43,16 +44,10 @@ def main():
 
         try:
             request = Request(request_str=user_input, storages=storages)
-
-        except BaseError as error:
-            print(error.message)
-            continue
-
             courier = Courier(request=request, storages=storages)
-        try:
             courier.move()
+
         except BaseError as error:
-            
             print(error.message)
 
 
